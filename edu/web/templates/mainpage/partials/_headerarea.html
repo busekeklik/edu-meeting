@@ -18,7 +18,7 @@
                         <li class="has-sub">
                             <a href="javascript:void(0)">Pages</a>
                             <ul class="sub-menu">
-                                <li><a href="#upcoming-meetings">Upcoming Meetings</a></li>
+                                <li><a href="{% url 'meetings' %}">Upcoming Meetings</a></li>
                                 {% if meeting %}
                                     <li><a href="{% url 'meeting-details' id=meeting.id %}">View Details</a></li>
                                 {% endif %}
