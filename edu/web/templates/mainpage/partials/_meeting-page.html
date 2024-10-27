@@ -1,0 +1,66 @@
+{% load static %}
+
+<section class="meetings-page" id="meetings">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="meeting-single-item">
+                            <div class="thumb">
+                                <div class="price">
+                                    <span>${{ meeting.course.price }}</span>
+                                </div>
+                                <div class="date">
+                                    <h6>{{ meeting.date|date:"M" }} <span>{{ meeting.date|date:"d" }}</span></h6>
+                                </div>
+                                <a href="{% url 'meeting-details' id=meeting.id %}"><img src="{% static 'assets/images/single-meeting.jpg' %}" alt="{{ meeting.title }}"></a>
+                            </div>
+                            <div class="down-content">
+                                <a href="{% url 'meeting-details' id=meeting.id %}"><h4>{{ meeting.title }}</h4></a>
+                                <p>{{ meeting.location }}</p>
+                                <p class="description">{{ meeting.course.description }}</p>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="hours">
+                                            <h5>Hours</h5>
+                                            <p>Monday - Friday: 07:00 AM - 13:00 PM<br>Saturday- Sunday: 09:00 AM - 15:00 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="location">
+                                            <h5>Location</h5>
+                                            <p>{{ meeting.location }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="book now">
+                                            <h5>Book Now</h5>
+                                            <p>010-020-0340</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="share">
+                                            <h5>Share:</h5>
+                                            <ul>
+                                                <li><a href="#">Facebook</a>,</li>
+                                                <li><a href="#">Twitter</a>,</li>
+                                                <li><a href="#">Linkedin</a>,</li>
+                                                <li><a href="#">Behance</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="main-button-red">
+                            <a href="{% url 'meetings' %}">Back To Meetings List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

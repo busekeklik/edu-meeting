@@ -1,0 +1,60 @@
+{% load static %}
+
+<!-- Bootstrap and jQuery -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Additional Libraries -->
+<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+<script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'assets/js/lightbox.js' %}"></script>
+<script src="{% static 'assets/js/tabs.js' %}"></script>
+<script src="{% static 'assets/js/video.js' %}"></script>
+<script src="{% static 'assets/js/slick-slider.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+<!-- Navigation Script -->
+<script>
+    $(document).ready(function() {
+        // Set the first navigation item as active
+        $('.nav li:first').addClass('active');
+
+        // Function to animate scrolling to sections
+        function showSection(section, isAnimate) {
+            var direction = section.replace(/#/, '');
+            var reqSection = $('.section').filter(`[data-section="${direction}"]`);
+            var reqSectionPos = reqSection.offset().top;
+
+            if (isAnimate) {
+                $('body, html').animate({ scrollTop: reqSectionPos }, 800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+        }
+
+        // Check which section is active while scrolling
+        function checkSection() {
+            $('.section').each(function() {
+                var $this = $(this);
+                var topEdge = $this.offset().top - 80;
+                var bottomEdge = topEdge + $this.height();
+                var wScroll = $(window).scrollTop();
+
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var currentId = $this.data('section');
+                    var reqLink = $('a').filter(`[href*="#${currentId}"]`);
+                    reqLink.closest('li').addClass('active').siblings().removeClass('active');
+                }
+            });
+        }
+
+        // Scroll to section on link click
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function(e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
+        });
+
+        // Activate section check on scroll
+        $(window).scroll(checkSection);
+    });
+</script>

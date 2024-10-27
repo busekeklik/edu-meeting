@@ -57,3 +57,13 @@ def index(request):
         'upcoming_meetings': upcoming_meetings,
         'popular_courses': popular_courses
     })
+
+def meetings(request):
+    # This might list all meetings
+    all_meetings = Meetings.objects.all()
+    return render(request, 'mainpage/meetings.html', {'meetings': all_meetings})
+
+
+def meeting_details(request, id):
+    meeting = get_object_or_404(Meetings, pk=id)
+    return render(request, 'mainpage/meeting-details.html', {'meeting': meeting})
