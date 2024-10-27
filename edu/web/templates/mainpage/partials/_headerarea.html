@@ -13,19 +13,19 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav" id="main-nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li><a href="{% url 'meetings' %}">Upcoming Meetings</a></li>
+                        <li><a href="#meetings">Upcoming Meetings</a></li>
                         <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
                         <li class="has-sub">
                             <a href="javascript:void(0)">Pages</a>
                             <ul class="sub-menu">
-                                <li><a href="{% url 'meetings' %}">Upcoming Meetings</a></li>
+                                <li><a href="#upcoming-meetings">Upcoming Meetings</a></li>
                                 {% if meeting %}
                                     <li><a href="{% url 'meeting-details' id=meeting.id %}">View Details</a></li>
                                 {% endif %}
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="#courses">Courses</a></li> 
-                        <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+                        <li class="scroll-to-section"><a href="#courses">Courses</a></li>
+                        <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
                     </ul>
                     <a class='menu-trigger' id="menu-trigger">
                         <span>Menu</span>

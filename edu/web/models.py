@@ -20,6 +20,7 @@ class Students(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     department = models.CharField(max_length=100)
+    success_criteria = True
 
 class Courses(models.Model):
     name = models.CharField(max_length=50)
