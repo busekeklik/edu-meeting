@@ -1,0 +1,49 @@
+{% load static %}
+
+<section class="upcoming-meetings" id="meetings">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-heading">
+          <h2>Upcoming Meetings</h2>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="categories">
+          <h4>Meeting Categories</h4>
+          <ul>
+            {% for category in categories %}
+              <li><a href="#">{{ category }}</a></li>
+            {% endfor %}
+          </ul>
+          <div class="main-button-red">
+            <a href="meetings.html">All Upcoming Meetings</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="row">
+          {% for meeting in meetings %}
+            <div class="col-lg-6">
+              <div class="meeting-item">
+                <div class="thumb">
+                  <div class="price">
+                    <span>${{ meeting.course.price }}</span>
+                  </div>
+                  <a href="meeting-details.html"><img src="{% static 'assets/images/meeting-01.jpg' %}" alt="{{ meeting.title }}"></a>
+                </div>
+                <div class="down-content">
+                  <div class="date">
+                    <h6>{{ meeting.date|date:"M" }} <span>{{ meeting.date|date:"d" }}</span></h6>
+                  </div>
+                  <a href="meeting-details.html"><h4>{{ meeting.title }}</h4></a>
+                  <p>{{ meeting.course.description|truncatewords:10 }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

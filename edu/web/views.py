@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, get_object_or_404
 from .models import Meetings
 from .models import Teachers
@@ -39,3 +41,19 @@ def course_list(request):
 def course_detail(request, id):
     course = get_object_or_404(Courses, id=id)
     return render(request, 'courses/course_detail.html', {'course': course})
+
+def upcoming_meetings(request):
+    meetings = Meetings.objects.filter(date__gte=datetime.now()).order_by('date')[:5]  # Yaklaşan 5 toplantıyı al
+    return render(request, 'upcoming-meetings.html', {'meetings': meetings})
+
+def course_categories(request):
+    categories = Courses.objects.values_list('category', flat=True).distinct()
+    return render(request, 'course-categories.html', {'categories': categories})
+
+def index(request):
+    upcoming_meetings = Meetings.objects.filter(date__gte=datetime.now()).order_by('date')[:5]
+    popular_courses = Courses.objects.all().order_by('-popularity')[:10]
+    return render(request, 'mainpage/index.html', {
+        'upcoming_meetings': upcoming_meetings,
+        'popular_courses': popular_courses
+    })

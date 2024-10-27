@@ -6,6 +6,7 @@ class Meetings(models.Model):
     start_time = models.TimeField()
     duration = models.DurationField()
     location = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
     course = models.ForeignKey('Courses', on_delete=models.CASCADE, null=True)
 
 class Teachers(models.Model):

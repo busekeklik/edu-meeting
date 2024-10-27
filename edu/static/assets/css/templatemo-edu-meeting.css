@@ -789,6 +789,13 @@ services
   padding: 40px;
 }
 
+.services .icon img {
+  width: 64px; /* Genişlik */
+  height: 64px; /* Yükseklik */
+  object-fit: cover; /* Görseli ölçülere sığacak şekilde kes */
+}
+
+
 .services .item .icon {
   max-width: 60px;
   margin: 0 auto;
