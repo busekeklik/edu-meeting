@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Meetings, Courses
 
@@ -48,11 +49,15 @@ def course_categories(request):
 
 def contact_view(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-
-        return JsonResponse({'status': 'success', 'message': 'Thank you for your message!'})
-    else:
-        return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+        subject = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+        from_email = request.POST.get('email', '')
+        if subject and message and from_email:
+            try:
+                send_mail(subject, message, from_email, ['formdeneme23@gmail.com'])
+                return HttpResponse('Success')
+            except Exception as e:
+                return HttpResponse('Error: {}'.format(e))
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
+    return HttpResponse('Invalid request')
