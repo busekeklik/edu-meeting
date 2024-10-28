@@ -1,8 +1,8 @@
 from datetime import datetime
 
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Meetings
-from .models import Courses
+from .models import Meetings, Courses
 
 # Create your views here.
 def mainpage(request):
@@ -11,16 +11,6 @@ def mainpage(request):
 def upcoming_meetings(request):
     meetings = Meetings.objects.filter(date__gte=datetime.now()).order_by('date')[:5]  # Yaklaşan 5 toplantıyı al
     return render(request, 'upcoming-meetings.html', {'meetings': meetings})
-
-def course_categories(request):
-    categories = Courses.objects.values_list('category', flat=True).distinct()
-    return render(request, 'course-categories.html', {'categories': categories})
-
-
-import logging
-
-# Create a logger instance
-logger = logging.getLogger(__name__)
 
 def index(request):
     context = {
@@ -55,3 +45,14 @@ def course_categories(request):
     # Fetch distinct course categories
     categories = Courses.objects.values_list('category', flat=True).distinct()
     return render(request, 'course-categories.html', {'categories': categories})
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        return JsonResponse({'status': 'success', 'message': 'Thank you for your message!'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
