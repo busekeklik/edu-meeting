@@ -13,7 +13,7 @@ A project to manage educational meetings effectively with features like scheduli
 
 ## Installation
 1. Clone the repository:
-   
+   ```bash
    git clone https://github.com/busekeklik/edu-meeting.git
    cd edu-meeting
 2. Set up a virtual environment:
