@@ -42,16 +42,10 @@ After installation, visit http://127.0.0.1:8000/ to access the platform.
   ![Home](screenshots/home3.png)
   <br>
 
-  ![Home](screenshots/home44.png)
+  ![Home](screenshots/home4.png)
   <br>
   
-  ![Home](screenshots/home55.png)
-  <br>
-
- ![Home](screenshots/home44.png)
-  <br>
-  
-  ![Home](screenshots/home55.png)
+  ![Home](screenshots/home5.png)
   <br>
 
   ![Home](screenshots/home6.png)
